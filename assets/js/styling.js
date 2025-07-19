@@ -11,6 +11,8 @@
   }
   document.body.dataset.theme = theme;
 
+  if (window.location.href.includes("play.google.com/books/reader")) { return; }
+
   if (window.pywebview && window.pywebview.api && window.pywebview.api.get_icon) {
     window.pywebview.api.get_icon().then(icon => {
       const img = document.createElement("img");

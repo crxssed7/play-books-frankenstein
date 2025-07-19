@@ -3,6 +3,8 @@ body[data-theme="DARK"] {
     --foreground: white;
     --hint: #27292b;
     --selected: #171819;
+    --accent: lightblue;
+    --mat-mdc-button-persistent-ripple-color: var(--accent);
 }
 
 body[data-theme="LIGHT"] {
@@ -10,9 +12,116 @@ body[data-theme="LIGHT"] {
     --foreground: black;
     --hint: #eee;
     --selected: #eee;
+    --accent: navy;
+    --mat-mdc-button-persistent-ripple-color: var(--accent);
 }
 
-header {
+header,
+.selection-bar {
+    background-color: var(--hint) !important;
+}
+
+.selection-bar span {
+    color: var(--foreground);
+}
+
+mat-icon,
+mat-icon.mat-primary,
+mat-icon.mat-accent,
+mat-icon.mat-warn {
+    color: var(--accent) !important;
+}
+
+.mat-mdc-select {
+    color: var(--accent) !important;
+}
+
+.gmat-mdc-button.gmat-mdc-button:not(
+        .mat-mdc-button-disabled
+    ).mat-mdc-button:focus,
+.gmat-mdc-button.gmat-mdc-button:not(
+        .mat-mdc-button-disabled
+    ).mat-mdc-button:hover {
+    color: var(--accent) !important;
+}
+
+.-gb-tonal-button.gmat-mdc-button.mat-mdc-button.mat-primary {
+    color: var(--accent) !important;
+}
+
+.-gb-tonal-button.gmat-mdc-button.mat-mdc-button.mat-primary {
+    background-color: var(--hint) !important;
+}
+
+.mat-mdc-menu-panel {
+    background-color: var(--background) !important;
+}
+
+.mat-mdc-form-field {
+    background-color: var(--hint) !important;
+}
+
+.mat-mdc-select-arrow svg {
+    fill: var(--accent) !important;
+}
+
+/* Progress button */
+.mat-mdc-select-placeholder {
+    color: var(--accent) !important;
+    transition: none !important;
+}
+
+/* Upload files button */
+.mdc-button__label {
+    color: var(--accent) !important;
+}
+
+/* Dropdown text on book cards */
+.mat-mdc-menu-item-text {
+    color: var(--foreground);
+}
+
+/* Recent and progress dropdowns */
+div.mat-mdc-select-panel {
+    background-color: var(--background) !important;
+}
+
+/* Active dropdown item */
+.mat-mdc-option:focus.mdc-list-item,
+.mat-mdc-option.mat-mdc-option-active.mdc-list-item {
+    background-color: var(--hint) !important;
+    color: var(--foreground) !important;
+}
+
+/* Dropdown item */
+.mat-mdc-option {
+    color: var(--foreground) !important;
+}
+
+/* Recent dropdown item selected text */
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled):not(
+        .mat-mdc-option-multiple
+    )
+    .mdc-list-item__primary-text {
+    color: var(--foreground) !important;
+}
+
+/* Tick icon on selectec drop down item */
+.gmat-mdc-select
+    .mat-mdc-select-panel.mat-primary
+    .mat-mdc-option
+    .mat-pseudo-checkbox,
+.gmat-mdc-select
+    .mat-mdc-select-panel.mat-undefined
+    .mat-mdc-option
+    .mat-pseudo-checkbox {
+    --mat-pseudo-checkbox-minimal-selected-checkmark-color: var(
+        --foreground
+    ) !important;
+}
+
+/* Book card selected */
+.card.selected {
     background-color: var(--hint) !important;
 }
 

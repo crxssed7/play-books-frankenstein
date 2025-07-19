@@ -1,3 +1,21 @@
+body[data-theme="DARK"] {
+    --background: #202124;
+    --foreground: white;
+    --hint: #27292b;
+    --selected: #171819;
+    --accent: lightblue;
+    --mat-mdc-button-persistent-ripple-color: var(--accent);
+}
+
+body[data-theme="LIGHT"] {
+    --background: white;
+    --foreground: black;
+    --hint: #eee;
+    --selected: #eee;
+    --accent: navy;
+    --mat-mdc-button-persistent-ripple-color: var(--accent);
+}
+
 #matcher {
     position: fixed;
     top: 20px;
@@ -7,14 +25,14 @@
     overflow-y: auto;
     background: white;
     color: black;
-    border: 2px solid #202124;
+    border: 2px solid var(--hint);
     z-index: 999999;
     font-family: sans-serif;
     display: flex;
     flex-direction: column;
     gap: 20px;
     border-radius: 28px;
-    background-color: #27292b;
+    background-color: var(--background);
 }
 
 .hc-header {
@@ -23,7 +41,7 @@
     align-items: center;
     padding: 20px;
     padding-bottom: 0;
-    color: white;
+    color: var(--foreground);
 }
 
 .result {
@@ -32,11 +50,11 @@
     gap: 10px;
     cursor: pointer;
     padding: 5px 20px;
-    color: white;
+    color: var(--foreground);
 }
 
 .result:hover {
-    background-color: #202124;
+    background-color: var(--hint);
 }
 
 .close-button {

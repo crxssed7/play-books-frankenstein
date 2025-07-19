@@ -34,6 +34,8 @@ class App:
 
         disable_links_js = load_asset("js/disable_links.js")
         self.window.evaluate_js(disable_links_js)
+        styling_js = load_asset("js/styling.js")
+        self.window.evaluate_js(styling_js)
 
         if url.startswith("https://play.google.com/books/reader"):
             matcher_css = load_asset("css/matcher.css")
@@ -45,5 +47,3 @@ class App:
         elif url.startswith("https://play.google.com/books"):
             css = load_asset("css/style.css")
             self.window.load_css(css)
-            styling_js = load_asset("js/styling.js")
-            self.window.evaluate_js(styling_js)
