@@ -4,10 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pywebview = {extras = ["gtk"], version = "*"}
 requests = "*"
+pywebview = {extras = ["qt"], version = "*"}
 
 [dev-packages]
+pyinstaller = "*"
 
 [requires]
 python_version = "3.13"

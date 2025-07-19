@@ -1,3 +1,6 @@
+import os
+# TODO: This probably isn't the fix we want.
+os.environ['QT_QPA_PLATFORM'] = 'xcb'
 import webview
 
 from assets import load_asset
@@ -11,7 +14,7 @@ class App:
         self.window.events.loaded += self._on_loaded
 
     def start(self):
-        webview.start(private_mode=False)
+        webview.start(private_mode=False, gui="qt")
 
     def _on_loaded(self):
         if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
