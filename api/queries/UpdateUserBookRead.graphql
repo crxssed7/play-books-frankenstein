@@ -1,0 +1,9 @@
+mutation MyMutation($id: Int!, $progress_pages: Int) {
+    update_user_book_read(
+        id: $id
+        object: { progress_pages: $progress_pages }
+    ) {
+        id
+        error
+    }
+}

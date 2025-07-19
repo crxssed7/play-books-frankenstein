@@ -1,0 +1,29 @@
+mutation CreateUserBook($book_id: Int!, $first_started_reading_date: date) {
+    insert_user_book(
+        object: {
+            book_id: $book_id
+            first_started_reading_date: $first_started_reading_date
+            status_id: 2
+        }
+    ) {
+        error
+        user_book {
+            user_book_reads(where: { finished_at: { _is_null: true } }) {
+                id
+                user_book_id
+                progress
+                finished_at
+            }
+            id
+            book {
+                title
+                id
+                pages
+                editions {
+                    id
+                    title
+                }
+            }
+        }
+    }
+}

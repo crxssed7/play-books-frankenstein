@@ -1,0 +1,45 @@
+#matcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: white;
+    color: black;
+    border: 2px solid #202124;
+    z-index: 999999;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 28px;
+    background-color: #27292b;
+}
+
+.hc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 0;
+    color: white;
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 20px;
+    color: white;
+}
+
+.result:hover {
+    background-color: #202124;
+}
+
+.close-button {
+    font-size: 24px;
+    cursor: pointer;
+}

@@ -1,0 +1,111 @@
+body[data-theme="DARK"] {
+    --background: #202124;
+    --foreground: white;
+    --hint: #27292b;
+    --selected: #171819;
+}
+
+body[data-theme="LIGHT"] {
+    --background: white;
+    --foreground: black;
+    --hint: #eee;
+    --selected: #eee;
+}
+
+header {
+    background-color: var(--hint) !important;
+}
+
+.mat-app-background {
+    background-color: var(--background);
+}
+
+.library-header {
+    display: none !important;
+}
+
+/* Book cards */
+gpb-library-card {
+    background-color: var(--background) !important;
+}
+
+/* Book titles */
+a.title {
+    color: var(--foreground);
+}
+
+/* Hide search input */
+.gb_ze {
+    display: none !important;
+}
+
+/* Hide settings and help buttons */
+.gb_ke {
+    display: none;
+}
+
+/* Hide Google apps */
+.gb_4c {
+    display: none;
+}
+
+.mat-expansion-panel {
+    background-color: var(--hint) !important;
+}
+
+.about-links {
+    display: none !important;
+}
+
+.mat-mdc-dialog-surface {
+    background-color: var(--selected) !important;
+}
+
+.navbar-item.selected {
+    background-color: var(--selected) !important;
+}
+
+.navbar-item.selected.cdk-focused[_ngcontent-ng-c3080176001],
+.navbar-item.selected[_ngcontent-ng-c3080176001]:hover {
+    background-color: var(--background) !important;
+}
+
+.mat-mdc-dialog-container .mat-mdc-dialog-title {
+    color: var(--foreground) !important;
+}
+
+.mat-expansion-panel-header-title[_ngcontent-ng-c3080176001],
+.navbar-header[_ngcontent-ng-c3080176001],
+.navbar-item[_ngcontent-ng-c3080176001]:not(.mat-primary) {
+    color: var(--foreground) !important;
+}
+
+/* Hide Google Play logo */
+a[aria-label="Google Play Books"] {
+    display: none;
+}
+
+.gmat-mdc-dialog .mat-mdc-dialog-container .mat-mdc-dialog-content {
+    color: var(--foreground);
+}
+
+.frankenstein-logo {
+    height: 50px;
+    width: auto;
+}
+
+body[data-theme="LIGHT"] .frankenstein-logo {
+    filter: invert(100) brightness(0);
+}
+
+/* Action buttons in the top right */
+.gb_Te {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.moon {
+    cursor: pointer;
+    margin-top: 3px;
+}

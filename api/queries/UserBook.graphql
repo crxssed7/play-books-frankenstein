@@ -1,0 +1,22 @@
+query UserBook($id: Int) {
+    me {
+        user_books(where: { book_id: { _eq: $id } }) {
+            user_book_reads(where: { finished_at: { _is_null: true } }) {
+                id
+                user_book_id
+                progress
+                finished_at
+            }
+            id
+            book {
+                title
+                id
+                pages
+                editions {
+                    id
+                    title
+                }
+            }
+        }
+    }
+}

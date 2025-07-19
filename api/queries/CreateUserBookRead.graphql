@@ -1,0 +1,13 @@
+mutation MyMutation($user_book_id: Int!, $started_at: date) {
+    insert_user_book_read(
+        user_book_id: $user_book_id
+        user_book_read: { progress_pages: 0, started_at: $started_at }
+    ) {
+        user_book_read {
+            id
+            user_book_id
+            progress
+            finished_at
+        }
+    }
+}

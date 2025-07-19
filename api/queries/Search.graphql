@@ -1,0 +1,5 @@
+query Search($query: String!) {
+  search(query: $query, query_type: "Book", per_page: 25, page: 1) {
+    results
+  }
+}
