@@ -1,6 +1,7 @@
 import datetime
-import os
 import requests
+
+from assets import resource_path
 
 class Hardcover:
     def __init__(self, token: str | None):
@@ -92,6 +93,6 @@ class Hardcover:
         )
 
     def _load_query(self, query):
-        asset_path = os.path.join(os.path.dirname(__file__), f"queries/{query}.graphql")
+        asset_path = resource_path(f"api/queries/{query}.graphql")
         with open(asset_path, 'r') as file:
             return file.read()
