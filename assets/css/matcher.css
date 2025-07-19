@@ -4,7 +4,6 @@ body[data-theme="DARK"] {
     --hint: #27292b;
     --selected: #171819;
     --accent: lightblue;
-    --mat-mdc-button-persistent-ripple-color: var(--accent);
 }
 
 body[data-theme="LIGHT"] {
@@ -13,7 +12,6 @@ body[data-theme="LIGHT"] {
     --hint: #eee;
     --selected: #eee;
     --accent: navy;
-    --mat-mdc-button-persistent-ripple-color: var(--accent);
 }
 
 #matcher {
@@ -33,6 +31,12 @@ body[data-theme="LIGHT"] {
     gap: 20px;
     border-radius: 28px;
     background-color: var(--background);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#matcher::-webkit-scrollbar {
+    display: none;
 }
 
 .hc-header {

@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 requests = "*"
 pywebview = {extras = ["qt"], version = "*"}
+platformdirs = "*"
 
 [dev-packages]
 pyinstaller = "*"

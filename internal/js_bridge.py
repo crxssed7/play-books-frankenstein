@@ -1,7 +1,8 @@
 import json
 
 from assets import image_base64
-from constants import MATCHES, SESSION, HARDCOVER
+from constants import SESSION, HARDCOVER
+from internal.matches import MATCHES
 
 class JSBridge:
     def update_progress_percentage(self, data):

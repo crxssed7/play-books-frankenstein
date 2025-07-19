@@ -4,7 +4,7 @@ os.environ['QT_QPA_PLATFORM'] = 'xcb'
 import webview
 
 from assets import load_asset
-from constants import SESSION, START_URL, HARDCOVER
+from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
 
 class App:
@@ -14,7 +14,12 @@ class App:
         self.window.events.loaded += self._on_loaded
 
     def start(self):
+        self._setup_config_dir()
         webview.start(private_mode=False, gui="qt")
+
+    def _setup_config_dir(self):
+        if not os.path.exists(DATA_DIR):
+            os.makedirs(DATA_DIR)
 
     def _on_loaded(self):
         if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():

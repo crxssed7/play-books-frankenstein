@@ -4,7 +4,6 @@ body[data-theme="DARK"] {
     --hint: #27292b;
     --selected: #171819;
     --accent: lightblue;
-    --mat-mdc-button-persistent-ripple-color: var(--accent);
 }
 
 body[data-theme="LIGHT"] {
@@ -13,7 +12,15 @@ body[data-theme="LIGHT"] {
     --hint: #eee;
     --selected: #eee;
     --accent: navy;
-    --mat-mdc-button-persistent-ripple-color: var(--accent);
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 header,
@@ -217,4 +224,9 @@ body[data-theme="LIGHT"] .frankenstein-logo {
 .moon {
     cursor: pointer;
     margin-top: 3px;
+}
+
+/* Checkboxes inside edit shelves modal */
+.mat-mdc-checkbox .mat-internal-form-field {
+    color: var(--foreground) !important;
 }
