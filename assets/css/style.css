@@ -230,3 +230,18 @@ body[data-theme="LIGHT"] .frankenstein-logo {
 .mat-mdc-checkbox .mat-internal-form-field {
     color: var(--foreground) !important;
 }
+
+/* Empty collection dialog */
+.inline-dialog-box {
+    background-color: var(--hint) !important;
+    box-shadow: 0 2px 4px var(--accent);
+}
+
+.inline-dialog-header,
+.inline-dialog-body {
+    color: var(--foreground) !important;
+}
+
+.inline-dialog-box button {
+    display: none !important;
+}

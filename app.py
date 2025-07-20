@@ -15,7 +15,7 @@ class App:
 
     def start(self):
         self._setup_config_dir()
-        webview.start(private_mode=False, gui="qt")
+        webview.start(private_mode=False, gui="qt", storage_path=DATA_DIR)
 
     def _setup_config_dir(self):
         if not os.path.exists(DATA_DIR):
@@ -34,7 +34,7 @@ class App:
             print("No URL loaded")
             return
 
-        if url.startswith("https://play.google.com/store"):
+        if url.startswith("https://play.google.com/store") or url.startswith("https://myaccount.google.com"):
             self.window.load_url(START_URL)
 
         disable_links_js = load_asset("js/disable_links.js")
