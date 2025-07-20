@@ -32,7 +32,7 @@ jobs:
 
       - name: Build executable
         run: |
-          pyinstaller main.spec
+          pyinstaller main.spec --windowed
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4

@@ -11,7 +11,11 @@ a = Analysis(
         ('assets/js/*', 'assets/js'),
         ('api/queries/*.graphql', 'api/queries')
     ],
-    hiddenimports=['webview'],
+    hiddenimports=[
+        'webview',
+        'webview.platforms.cocoa',
+        'webview.platforms.qt'
+    ],
     hookspath=[],
     hooksconfig={},
     runtime_hooks=[],
