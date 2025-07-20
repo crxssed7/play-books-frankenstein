@@ -32,7 +32,7 @@ jobs:
           pipenv install --deploy --system
 
       - name: Build with PyInstaller
-        run: pipenv run pyinstaller main.spec
+        run: pyinstaller main.spec
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
