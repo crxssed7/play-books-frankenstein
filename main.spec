@@ -46,8 +46,15 @@ exe = EXE(
 )
 
 # MacOS Test:
-coll = COLLECT(
+app = BUNDLE(
     exe,
+    name='frankenstein.app',
+    icon=None,
+    bundle_identifier='com.crxssed.frankenstein'
+)
+
+coll = COLLECT(
+    app,
     a.binaries,
     a.zipfiles,
     a.datas,
@@ -55,11 +62,4 @@ coll = COLLECT(
     upx=True,
     upx_exclude=[],
     name='frankenstein'
-)
-
-app = BUNDLE(
-    coll,
-    name='frankenstein.app',
-    icon=None,
-    bundle_identifier=None
 )
