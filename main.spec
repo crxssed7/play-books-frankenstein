@@ -1,6 +1,5 @@
 # -*- mode: python ; coding: utf-8 -*-
 
-
 a = Analysis(
     ['main.py'],
     pathex=[],
@@ -25,12 +24,12 @@ a = Analysis(
 )
 pyz = PYZ(a.pure)
 
+# Set exclude_binaries=True here to avoid duplication in BUNDLE step
 exe = EXE(
     pyz,
     a.scripts,
-    a.binaries,
-    a.datas,
     [],
+    exclude_binaries=True,
     name='frankenstein',
     debug=False,
     bootloader_ignore_signals=False,
@@ -44,4 +43,23 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
+)
+
+app = BUNDLE(
+    exe,
+    name='frankenstein.app',
+    icon=None,  # Or path to .icns file
+    bundle_identifier='com.yourdomain.frankenstein',
+    info_plist=None
+)
+
+coll = COLLECT(
+    app,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='frankenstein'
 )
