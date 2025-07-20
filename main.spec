@@ -52,14 +52,3 @@ app = BUNDLE(
     icon=None,
     bundle_identifier='com.crxssed.frankenstein'
 )
-
-coll = COLLECT(
-    app,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name='frankenstein'
-)
