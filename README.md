@@ -13,6 +13,8 @@
 
 Upcoming features:
 - Unlinking books from Hardcover
+- Basic theming
+- Anything else I find amusing :)
 
 ## Screenshots
 ![DARK MODE HOME](screenshots/DARK_HOME.jpg)
@@ -38,6 +40,7 @@ source .venv/bin/activate
 pipenv Install
 ```
 5. Run `python main.py`
+6. (OPTIONAL) You can build a binary with `pyinstaller main.spec`. The output will be in `dist/`
 
 ### Hardcover integration
 Frankenstein is setup to automatically track your progress with Hardcover.
