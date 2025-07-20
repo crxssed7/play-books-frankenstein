@@ -20,7 +20,26 @@ Upcoming features:
 ![LIGHT MODE HOME](screenshots/LIGHT_HOME.jpg)
 ![LIGHT MODE READER](screenshots/LIGHT_READER.jpg)
 
-## Hardcover integration
+## Usage
+The release workflow has not been setup yet, so for the time being you'll have to use Frankenstein "the hard way":
+1. Ensure you have Python 3 (https://www.python.org/) and Pipenv (https://pipenv.pypa.io/) installed
+2. Clone this repo and `cd` into it:
+```bash
+git clone https://github.com/crxssed7/play-books-frankenstein
+cd play-books-frankenstein
+```
+3. Initialize a virtual environment and activate it:
+```bash
+python -m venv .venv
+source .venv/bin/activate
+```
+4. Install dependencies:
+```bash
+pipenv Install
+```
+5. Run `python main.py`
+
+### Hardcover integration
 Frankenstein is setup to automatically track your progress with Hardcover.
 1. Head over to https://hardcover.app/account/api
 2. Copy your token (without the "Bearer" part)
