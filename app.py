@@ -1,6 +1,4 @@
 import os
-# TODO: This probably isn't the fix we want.
-os.environ['QT_QPA_PLATFORM'] = 'xcb'
 import webview
 
 from assets import load_asset
