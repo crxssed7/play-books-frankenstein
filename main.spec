@@ -44,3 +44,22 @@ exe = EXE(
     codesign_identity=None,
     entitlements_file=None,
 )
+
+# MacOS Test:
+coll = COLLECT(
+    exe,
+    a.binaries,
+    a.zipfiles,
+    a.datas,
+    strip=False,
+    upx=True,
+    upx_exclude=[],
+    name='frankenstein'
+)
+
+app = BUNDLE(
+    coll,
+    name='frankenstein.app',
+    icon=None,
+    bundle_identifier=None
+)
