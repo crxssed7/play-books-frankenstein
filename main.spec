@@ -6,6 +6,12 @@ IS_MAC = sys.platform == 'darwin'
 IS_WIN = sys.platform == 'win32'
 IS_LINUX = sys.platform.startswith('linux')
 
+ICON_PATH = None
+if IS_MAC:
+    ICON_PATH = 'assets/icons/icon.icns'
+elif IS_WIN:
+    ICON_PATH = 'assets/icons/icon.ico'
+
 a = Analysis(
     ['main.py'],
     pathex=[],
@@ -45,12 +51,13 @@ exe = EXE(
     disable_windowed_traceback=False,
     argv_emulation=IS_MAC,
     exclude_binaries=IS_MAC,
+    icon=ICON_PATH,
 )
 
 if IS_MAC:
     app = BUNDLE(
         exe,
         name='frankenstein.app',
-        icon=None,
+        icon=ICON_PATH,
         bundle_identifier='com.yourdomain.frankenstein'
     )
