@@ -8,9 +8,9 @@ IS_LINUX = sys.platform.startswith('linux')
 
 ICON_PATH = None
 if IS_MAC:
-    ICON_PATH = 'assets/icons/icon.icns'
+    ICON_PATH = 'assets/icons/frankenstein.icns'
 elif IS_WIN:
-    ICON_PATH = 'assets/icons/icon.ico'
+    ICON_PATH = 'assets/icons/frankenstein.ico'
 
 a = Analysis(
     ['main.py'],
