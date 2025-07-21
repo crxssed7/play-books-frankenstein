@@ -1,16 +1,17 @@
-name: Build multi-platform
-
-# on:
-#   push:
-#     tags:
-#       - "[0-9]+.[0-9]+.[0-9]+"
+name: Build and release for all platforms
 
 on:
   push:
-    branches: [main]
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+# on:
+#   push:
+#     branches: [main]
 
 jobs:
   build:
+    name: Build on ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -40,3 +41,36 @@ jobs:
         with:
           name: frankenstein-${{ matrix.os }}
           path: dist/frankenstein*
+
+  release:
+    name: Create GitHub Release
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Get current tag
+        id: get_tag
+        run: echo "tag=${GITHUB_REF##*/}" >> "$GITHUB_OUTPUT"
+
+      - name: Get previous tag (if exists)
+        id: get_previous_tag
+        continue-on-error: true
+        run: |
+          prev_tag=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          echo "tag=$prev_tag" >> "$GITHUB_OUTPUT"
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.get_tag.outputs.tag }}
+          body: |
+            🎉 New release: **${{ steps.get_tag.outputs.tag }}**
+
+            ${{ steps.get_previous_tag.outputs.tag != '' && format('Full changelog can be viewed [here](https://github.com/{0}/compare/{1}...{2}).', github.repository, steps.get_previous_tag.outputs.tag, steps.get_tag.outputs.tag) || 'This is the first release.' }}
+          files: ./artifacts/**/*
