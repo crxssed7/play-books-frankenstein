@@ -36,16 +36,32 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller main.spec
 
-      - name: Zip output
+      - name: Zip macOS .app bundle
+        if: matrix.os == 'macos-latest'
         run: |
           cd dist
-          zip -r frankenstein-${{ matrix.os }}.zip frankenstein*
+          zip -r frankenstein-${{ matrix.os }}.zip frankenstein.app
 
-      - name: Upload artifact
+      - name: Upload artifact (macOS)
+        if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v4
         with:
-          name: frankenstein-${{ matrix.os }}
-          path: dist/frankenstein-${{ matrix.os }}.zip
+          name: frankenstein-macos
+          path: dist/frankenstein-macos.zip
+
+      - name: Upload artifact (Windows)
+        if: matrix.os == 'windows-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: frankenstein-windows
+          path: dist/frankenstein.exe
+
+      - name: Upload artifact (Linux)
+        if: matrix.os == 'ubuntu-latest'
+        uses: actions/upload-artifact@v4
+        with:
+          name: frankenstein-linux
+          path: dist/frankenstein
 
   release:
     name: Create GitHub Release
