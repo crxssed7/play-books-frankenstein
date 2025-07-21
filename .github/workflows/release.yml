@@ -36,11 +36,16 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller main.spec
 
+      - name: Zip output
+        run: |
+          cd dist
+          zip -r frankenstein-${{ matrix.os }}.zip frankenstein*
+
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: frankenstein-${{ matrix.os }}
-          path: dist/frankenstein*
+          path: dist/frankenstein-${{ matrix.os }}.zip
 
   release:
     name: Create GitHub Release
@@ -73,4 +78,4 @@ jobs:
             🎉 New release: **${{ steps.get_tag.outputs.tag }}**
 
             ${{ steps.get_previous_tag.outputs.tag != '' && format('Full changelog can be viewed [here](https://github.com/{0}/compare/{1}...{2}).', github.repository, steps.get_previous_tag.outputs.tag, steps.get_tag.outputs.tag) || 'This is the first release.' }}
-          files: ./artifacts/**/.zip
+          files: ./artifacts/**/*
