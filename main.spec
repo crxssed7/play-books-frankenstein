@@ -43,7 +43,8 @@ exe = EXE(
     upx=True,
     console=False,
     disable_windowed_traceback=False,
-    argv_emulation=IS_MAC,  # needed on macOS
+    argv_emulation=IS_MAC,
+    exclude_binaries=IS_MAC,
 )
 
 if IS_MAC:
@@ -53,15 +54,3 @@ if IS_MAC:
         icon=None,
         bundle_identifier='com.yourdomain.frankenstein'
     )
-    # ❌ No COLLECT here
-# else:
-#     coll = COLLECT(
-#         exe,
-#         a.binaries,
-#         a.zipfiles,
-#         a.datas,
-#         strip=False,
-#         upx=True,
-#         upx_exclude=[],
-#         name='frankenstein'
-#     )
