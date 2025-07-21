@@ -1,7 +1,7 @@
 <img src="assets/img/frankenstein.png" width="100" />
 
 # Frankenstein
-#### Unofficial Google Play Books client for desktop
+**Unofficial Google Play Books client for desktop**
 
 > [!WARNING]
 > Frankenstein has only been tested on Linux using uploaded books. It should still work on other platforms too (hopefully).
