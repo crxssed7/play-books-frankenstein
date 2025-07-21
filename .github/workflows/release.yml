@@ -40,14 +40,14 @@ jobs:
         if: matrix.os == 'macos-latest'
         run: |
           cd dist
-          zip -r frankenstein-${{ matrix.os }}.zip frankenstein.app
+          zip -r frankenstein-macos.zip frankenstein.app
 
       - name: Upload artifact (macOS)
         if: matrix.os == 'macos-latest'
         uses: actions/upload-artifact@v4
         with:
           name: frankenstein-macos
-          path: dist/frankenstein-macos-latest.zip
+          path: dist/frankenstein-macos.zip
 
       - name: Upload artifact (Windows)
         if: matrix.os == 'windows-latest'
@@ -89,9 +89,10 @@ jobs:
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
+          name: v${{ steps.get_tag.outputs.tag }}
           tag_name: ${{ steps.get_tag.outputs.tag }}
           body: |
-            🎉 New release: **${{ steps.get_tag.outputs.tag }}**
+            🎉 New release: **v${{ steps.get_tag.outputs.tag }}**
 
             ${{ steps.get_previous_tag.outputs.tag != '' && format('Full changelog can be viewed [here](https://github.com/{0}/compare/{1}...{2}).', github.repository, steps.get_previous_tag.outputs.tag, steps.get_tag.outputs.tag) || 'This is the first release.' }}
           files: ./artifacts/**/*
