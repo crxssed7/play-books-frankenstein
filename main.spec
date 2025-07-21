@@ -50,7 +50,6 @@ exe = EXE(
     console=False,
     disable_windowed_traceback=False,
     argv_emulation=IS_MAC,
-    exclude_binaries=IS_MAC,
     icon=ICON_PATH,
 )
 
