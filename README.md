@@ -3,6 +3,9 @@
 # Frankenstein
 **Unofficial Google Play Books client for desktop**
 
+> [!CAUTION]
+> There is currently a bug that wipes the dates read for whatever book you're reading. Until that is fixed, the Frankenstein Hardcover integration should not be used.
+
 > [!WARNING]
 > Frankenstein has only been tested on Linux using uploaded books. It should still work on other platforms too (hopefully).
 
