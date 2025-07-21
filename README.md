@@ -1,4 +1,4 @@
-<img src="assets/img/frankenstein.png" width="100" />
+<img src="assets/icons/frankenstein-1024.png" width="100" />
 
 # Frankenstein
 **Unofficial Google Play Books client for desktop**
