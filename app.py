@@ -1,7 +1,7 @@
 import os
 import webview
 
-from assets import load_asset
+from assets import load_asset, resource_path
 from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
 
@@ -13,7 +13,8 @@ class App:
 
     def start(self):
         self._setup_config_dir()
-        webview.start(private_mode=False, gui="qt", storage_path=DATA_DIR)
+        icon = resource_path("assets/img/frankenstein.ico")
+        webview.start(private_mode=False, gui="qt", storage_path=DATA_DIR, icon=icon)
 
     def _setup_config_dir(self):
         if not os.path.exists(DATA_DIR):
