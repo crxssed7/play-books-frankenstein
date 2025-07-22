@@ -58,5 +58,5 @@ if IS_MAC:
         exe,
         name='frankenstein.app',
         icon=ICON_PATH,
-        bundle_identifier='com.yourdomain.frankenstein'
+        bundle_identifier='com.crxssed.frankenstein'
     )
