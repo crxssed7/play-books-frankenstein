@@ -1,0 +1,11 @@
+query Book($id: Int) {
+    books(where: { id: { _eq: $id } }) {
+        title
+        id
+        pages
+        editions {
+            id
+            title
+        }
+    }
+}

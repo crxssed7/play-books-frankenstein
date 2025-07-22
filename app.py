@@ -21,8 +21,9 @@ class App:
 
     def _on_loaded(self):
         if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
-            print(f"Updating Hardcover progress for {SESSION.active_hardcover_id}")
-            error = HARDCOVER.update_progress(SESSION.active_user_book_read_id, SESSION.current_page)
+            if SESSION.active_hardcover_book: # This should always be true
+                print(f"Updating Hardcover progress for {SESSION.active_hardcover_book.get('id')}")
+            error = HARDCOVER.update_progress(SESSION.active_user_book_read, SESSION.current_page)
             if error:
                 print(f"Could not update Hardcover progress: {error}")
             SESSION.stop()

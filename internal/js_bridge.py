@@ -16,15 +16,20 @@ class JSBridge:
             return HARDCOVER.search(query)
         return []
 
-    def save_match(self, google_id, hardcover_id):
-        print(f"Saving match: {google_id} -> {hardcover_id}")
-        MATCHES.save_match(google_id, hardcover_id)
+    def save_match(self, google_id, book_id):
+        hardcover_book = HARDCOVER.get_book(book_id)
+        if hardcover_book == None:
+            print(f"Hardcover book not found for ID: {book_id}")
+            return "BOOK_NOT_FOUND"
+
+        print(f"Saving match: {google_id} -> {hardcover_book.get('id')}")
+        MATCHES.save_match(google_id, hardcover_book)
         if not HARDCOVER.is_logged_in():
             return "NOT_LOGGED_IN"
 
-        user_book, user_book_read = HARDCOVER.get_or_create_user_book_read(hardcover_id)
+        user_book, user_book_read = HARDCOVER.get_or_create_user_book_read(hardcover_book)
         if user_book_read and user_book:
-            SESSION.start(hardcover_id, google_id, user_book_read["id"], user_book["book"]["pages"])
+            SESSION.start(hardcover_book, google_id, user_book_read, user_book["book"]["pages"])
         return "OK"
 
     def get_match_from_google_id(self, google_id):
@@ -36,7 +41,7 @@ class JSBridge:
 
         user_book, user_book_read = HARDCOVER.get_or_create_user_book_read(hardcover_id)
         if user_book_read and user_book:
-            SESSION.start(hardcover_id, google_id, user_book_read["id"], user_book["book"]["pages"])
+            SESSION.start(hardcover_id, google_id, user_book_read, user_book["book"]["pages"])
         return "OK"
 
     def get_icon(self):

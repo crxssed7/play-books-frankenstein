@@ -11,8 +11,11 @@ mutation CreateUserBook($book_id: Int!, $first_started_reading_date: date) {
             user_book_reads(where: { finished_at: { _is_null: true } }) {
                 id
                 user_book_id
-                progress
                 finished_at
+                progress_pages
+                started_at
+                progress_seconds
+                edition_id
             }
             id
             book {

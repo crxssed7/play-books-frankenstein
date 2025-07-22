@@ -1,7 +1,19 @@
-mutation MyMutation($id: Int!, $progress_pages: Int) {
+mutation MyMutation(
+    $id: Int!
+    $progress_pages: Int
+    $started_at: date
+    $finished_at: date
+    $edition_id: Int
+) {
     update_user_book_read(
         id: $id
-        object: { progress_pages: $progress_pages }
+        object: {
+            progress_pages: $progress_pages
+            started_at: $started_at
+            progress_seconds: 0
+            finished_at: $finished_at
+            edition_id: $edition_id
+        }
     ) {
         id
         error

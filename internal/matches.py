@@ -7,8 +7,8 @@ class Matches:
     def __init__(self):
         self.matches = self._read_matches_from_file()
 
-    def save_match(self, google_id, hardcover_id):
-        self.matches[google_id] = hardcover_id
+    def save_match(self, google_id, hardcover_book):
+        self.matches[google_id] = hardcover_book
         self._save_matches_to_file()
 
     def get(self, google_id):

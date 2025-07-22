@@ -30,16 +30,25 @@ class Hardcover:
             return hardcover_items
         return []
 
-    def get_or_create_user_book_read(self, book_id):
-        user_book = self.get_user_book(book_id)
+    def get_book(self, book_id):
+        body = self._build_body("Book", {"id": int(book_id)})
+        result = self._send_request(body)
+        if result.status_code < 300:
+            json = result.json()
+            if len(json["data"]["books"]) > 0:
+                return json["data"]["books"][0]
+        return None
+
+    def get_or_create_user_book_read(self, book):
+        user_book = self.get_user_book(book.get("id"))
         if user_book:
             if len(user_book["user_book_reads"]) > 0:
                 user_book_read = user_book["user_book_reads"][0]
                 return user_book, user_book_read
             else:
-                return user_book, self.create_user_book_read(user_book)
+                return user_book, self.create_user_book_read(book, user_book)
         else:
-            user_book = self.create_user_book(book_id)
+            user_book = self.create_user_book(book.get("id"))
             if user_book:
                 return user_book, user_book["user_book_reads"][0]
             else:
@@ -64,8 +73,9 @@ class Hardcover:
             user_book = json["data"]["insert_user_book"]["user_book"]
             return user_book
 
-    def create_user_book_read(self, user_book):
-        body = self._build_body("CreateUserBookRead", {"user_book_id": int(user_book["id"]), "started_at": datetime.date.today().strftime('%Y-%m-%d')})
+    def create_user_book_read(self, book, user_book):
+        edition = book["editions"]["id"]
+        body = self._build_body("CreateUserBookRead", {"user_book_id": int(user_book["id"]), "started_at": datetime.date.today().strftime('%Y-%m-%d'), "edition_id": edition})
         result = self._send_request(body)
         if result.status_code < 300:
             json = result.json()
@@ -73,8 +83,15 @@ class Hardcover:
             return user_book_read
         return None
 
-    def update_progress(self, user_book_read_id, progress_pages):
-        body = self._build_body("UpdateUserBookRead", {"id": int(user_book_read_id), "progress_pages": int(progress_pages)})
+    def update_progress(self, user_book_read, progress_pages):
+        variables = {
+            "id": int(user_book_read.get("id")),
+            "progress_pages": int(progress_pages),
+            "started_at": user_book_read.get("started_at"),
+            "finished_at": user_book_read.get("finished_at"),
+            "edition_id": user_book_read.get("edition_id")
+        }
+        body = self._build_body("UpdateUserBookRead", variables)
         result = self._send_request(body)
         if result.status_code < 300:
             json = result.json()
