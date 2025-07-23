@@ -2,14 +2,9 @@ import os
 import webview
 import sys
 
-from assets import load_asset, resource_path
+from assets import load_asset
 from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
-
-try:
-    from internal.win32_handler import Win32Handler
-except:
-    Win32Handler = None
 
 class App:
     def __init__(self):
@@ -19,17 +14,12 @@ class App:
 
     def start(self):
         self._setup_config_dir()
-        webview.start(private_mode=False, gui="qt", storage_path=DATA_DIR)
-        self._setup_windows_app_icon()
+        gui = "qt" if sys.platform == "linux" else None
+        webview.start(private_mode=False, gui=gui, storage_path=DATA_DIR)
 
     def _setup_config_dir(self):
         if not os.path.exists(DATA_DIR):
             os.makedirs(DATA_DIR)
-
-    def _setup_windows_app_icon(self):
-        if sys.platform == "win32" and Win32Handler is not None:
-            icon_path = resource_path("assets/img/frankenstein.ico")
-            Win32Handler().set_window_icon(icon_path, "Frankenstein")
 
     def _on_loaded(self):
         if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
