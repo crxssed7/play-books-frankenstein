@@ -1,6 +1,5 @@
 import os
 import webview
-import ctypes
 import sys
 
 from assets import load_asset
@@ -10,21 +9,17 @@ from internal.js_bridge import JSBridge
 class App:
     def __init__(self):
         self.js_bridge = JSBridge()
-        self._setup_windows_app_icon()
         self.window = webview.create_window("Frankenstein", START_URL, width=1024, height=768, js_api=self.js_bridge, background_color="#202124")
         self.window.events.loaded += self._on_loaded
 
     def start(self):
         self._setup_config_dir()
-        webview.start(private_mode=False, gui="qt", storage_path=DATA_DIR)
+        gui = "qt" if sys.platform == "linux" else None
+        webview.start(private_mode=False, gui=gui, storage_path=DATA_DIR)
 
     def _setup_config_dir(self):
         if not os.path.exists(DATA_DIR):
             os.makedirs(DATA_DIR)
-
-    def _setup_windows_app_icon(self):
-        if sys.platform == "win32":
-            ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID("com.crxssed.frankenstein")
 
     def _on_loaded(self):
         if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
