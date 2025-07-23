@@ -46,21 +46,24 @@ class Win32Handler:
             target=_set_window_icon, args=[icon_path, window_name, tries], daemon=True
         ).start()
 
-    def find_window_wildcard(self, wildcard: str):
-        """Find a window whose title matches the wildcard regex."""
-        self._handle = None
-        cb = EnumWindowsProc(self._window_enum_callback)
-        EnumWindows(cb, wildcard.encode())
+    def find_window_wildcard(self, pattern: str):
+        regex = re.compile(pattern)
+
+        @ctypes.WINFUNCTYPE(wt.BOOL, wt.HWND, wt.LPARAM) # pyright:ignore
+        def enum_callback(hwnd, lParam):
+            return self._window_enum_callback(hwnd, lParam, regex)
+
+        EnumWindows(enum_callback, 0)
         return self
 
-    def _window_enum_callback(self, hwnd, lParam):
+    def _window_enum_callback(self, hwnd, lParam, regex):
         length = GetWindowTextLengthW(hwnd)
-        if not length:
+        if length == 0:
             return True
         buffer = ctypes.create_unicode_buffer(length + 1)
         GetWindowTextW(hwnd, buffer, length + 1)
         title = buffer.value
-        if re.match(lParam.decode(), title):
+        if regex.match(title):
             self._handle = hwnd
             return False  # stop enumeration
         return True  # continue
