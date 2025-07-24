@@ -169,7 +169,7 @@ a.title {
     background-color: var(--hint) !important;
 }
 
-.about-links {
+footer {
     display: none !important;
 }
 
@@ -244,4 +244,9 @@ body[data-theme="LIGHT"] .frankenstein-logo {
 
 .inline-dialog-box button {
     display: none !important;
+}
+
+.frankenstein-version {
+    color: var(--foreground);
+    padding: 20px 50px;
 }

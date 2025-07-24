@@ -1,7 +1,7 @@
 import json
 
 from assets import image_base64
-from constants import SESSION, HARDCOVER
+from constants import APP_VERSION, SESSION, HARDCOVER
 from internal.matches import MATCHES
 
 # TODO: Add tests
@@ -47,3 +47,6 @@ class JSBridge:
 
     def get_icon(self):
         return image_base64("img/frankenstein.png")
+
+    def get_app_version(self):
+        return APP_VERSION

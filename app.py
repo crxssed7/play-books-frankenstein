@@ -52,5 +52,7 @@ class App:
             self.window.evaluate_js(reader_js)
             self.window.evaluate_js(matcher_js)
         elif url.startswith("https://play.google.com/books"):
+            version_checker = load_asset("js/version_checker.js")
+            self.window.evaluate_js(version_checker)
             css = load_asset("css/style.css")
             self.window.load_css(css)
