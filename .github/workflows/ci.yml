@@ -24,4 +24,4 @@ jobs:
           pipenv install --deploy --system --dev
 
       - name: Run tests
-        run: pipenv run mamba
+        run: PYTHONPATH=. pipenv run mamba
