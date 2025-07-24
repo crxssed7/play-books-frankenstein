@@ -10,6 +10,8 @@ platformdirs = "*"
 
 [dev-packages]
 pyinstaller = "*"
+mamba = "*"
+expects = "*"
 
 [requires]
 python_version = "3.13"

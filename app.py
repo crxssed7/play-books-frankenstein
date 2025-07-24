@@ -6,6 +6,7 @@ from assets import load_asset
 from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
 
+# TODO: Figure out how to do end-to-end tests
 class App:
     def __init__(self):
         self.js_bridge = JSBridge()

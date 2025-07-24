@@ -4,6 +4,7 @@ from assets import image_base64
 from constants import SESSION, HARDCOVER
 from internal.matches import MATCHES
 
+# TODO: Add tests
 class JSBridge:
     def update_progress_percentage(self, data):
         array_data = json.loads(data["body"])

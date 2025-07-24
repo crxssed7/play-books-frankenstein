@@ -15,7 +15,7 @@ class Session:
         self.active_user_book_read = user_book_read
         self.active_user_book_read_id = user_book_read.get("id")
         self.num_of_pages = num_of_pages
-        self.calculate_progress()
+        self._calculate_progress()
 
     def stop(self):
         self.active_hardcover_book = None
@@ -28,11 +28,11 @@ class Session:
 
     def set_percentage(self, percentage):
         self.percentage = percentage
-        self.calculate_progress()
-
-    def calculate_progress(self):
-        if self.is_active():
-            self.current_page = round(self.percentage * self.num_of_pages)
+        self._calculate_progress()
 
     def is_active(self):
         return self.active_hardcover_book is not None and self.active_google_id is not None and self.active_user_book_read_id is not None
+
+    def _calculate_progress(self):
+        if self.is_active():
+            self.current_page = round(self.percentage * self.num_of_pages)
