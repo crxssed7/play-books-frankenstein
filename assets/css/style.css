@@ -136,7 +136,7 @@ div.mat-mdc-select-panel {
     background-color: var(--background);
 }
 
-.library-header {
+shelf-header > .header > .header-content {
     display: none !important;
 }
 
