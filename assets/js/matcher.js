@@ -79,7 +79,7 @@ function showHardcoverResults(results, googleId) {
         }
       });
     } else {
-      window.pywebview.api.set_current_book(match, googleID)
+      window.pywebview.api.session.set_current_book(match, googleID)
     }
   });
 })();
