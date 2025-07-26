@@ -73,7 +73,7 @@ function showHardcoverResults(results, googleId) {
   const googleID = extractGoogleIDFromURL();
   window.pywebview.api.matches.get_match_from_google_id(googleID).then(match => {
     if (match === null) {
-      window.pywebview.api.search_hardcover(title).then(results => {
+      window.pywebview.api.hardcover.search(title).then(results => {
         if (results.length > 0) {
           showHardcoverResults(results, googleID);
         }

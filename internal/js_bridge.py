@@ -2,6 +2,7 @@ import json
 
 from constants import SESSION, HARDCOVER
 from internal.bridges.asset_bridge import AssetBridge
+from internal.bridges.hardcover_bridge import HardcoverBridge
 from internal.bridges.matches_bridge import MatchesBridge
 from internal.bridges.version_bridge import VersionBridge
 
@@ -11,17 +12,12 @@ class JSBridge:
         self.assets = AssetBridge()
         self.version = VersionBridge()
         self.matches = MatchesBridge()
+        self.hardcover = HardcoverBridge()
 
     def update_progress_percentage(self, data):
         array_data = json.loads(data["body"])
         SESSION.set_percentage(array_data[-1][-1][-1])
         return "OK"
-
-    def search_hardcover(self, query):
-        if HARDCOVER.is_logged_in():
-            print(f"Searching Hardcover for: {query}")
-            return HARDCOVER.search(query)
-        return []
 
     def set_current_book(self, hardcover_id, google_id):
         if not HARDCOVER.is_logged_in():
