@@ -23,8 +23,8 @@
         headers: this._headers || {},
         body: body
       };
-      if (window.pywebview && window.pywebview.api && window.pywebview.api.update_progress_percentage) {
-        window.pywebview.api.update_progress_percentage(xhrData);
+      if (window.pywebview && window.pywebview.api && window.pywebview.api.session.update_progress_percentage) {
+        window.pywebview.api.session.update_progress_percentage(xhrData);
       }
     }
 

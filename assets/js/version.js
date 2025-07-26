@@ -27,7 +27,7 @@
     `;
     document.body.appendChild(dialog);
 
-    window.pywebview.api.frankenstein_colour_logo().then(logo => {
+    window.pywebview.api.assets.frankenstein_colour_logo().then(logo => {
       const logoElement = document.createElement('img');
       logoElement.src = logo;
       logoElement.height = 100;
@@ -80,8 +80,8 @@
     dialog.showModal();
   }
 
-  if (window.pywebview && window.pywebview.api && window.pywebview.api.check_for_update) {
-    window.pywebview.api.check_for_update().then(data => {
+  if (window.pywebview && window.pywebview.api && window.pywebview.api.version.check_for_update) {
+    window.pywebview.api.version.check_for_update().then(data => {
       createVersionElement(data.current_version)
 
       if (!data.new_version_available) { return; }

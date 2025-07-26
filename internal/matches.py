@@ -24,5 +24,3 @@ class Matches:
             with open(MATCHES_FILE, 'r') as file:
                 matches = json.load(file)
         return matches
-
-MATCHES = Matches()
