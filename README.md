@@ -16,7 +16,6 @@ Upcoming features:
 - Basic theming
 - Extensions
 - Automatic progress tracking toggle
-- Automatic app updates
 - Anything else I find amusing :)
 
 ## Screenshots

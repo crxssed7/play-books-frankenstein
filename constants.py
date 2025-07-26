@@ -4,7 +4,7 @@ import os
 from api.hardcover import Hardcover
 from internal.session import Session
 
-APP_VERSION = "0.0.4"
+APP_VERSION = "0.0.5"
 START_URL = 'https://play.google.com/books'
 SESSION = Session()
 HARDCOVER = Hardcover(os.getenv("HARDCOVER_TOKEN"))
