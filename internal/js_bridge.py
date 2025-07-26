@@ -71,3 +71,6 @@ class JSBridge:
     def open_release_page(self):
         webbrowser.open("https://github.com/crxssed7/play-books-frankenstein/releases/latest")
         return "OK"
+
+    def frankenstein_colour_logo(self):
+        return image_base64("img/frankenstein_colour.png")

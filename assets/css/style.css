@@ -250,9 +250,14 @@ body[data-theme="LIGHT"] .frankenstein-logo {
     color: var(--accent);
     font-weight: bold;
     padding: 20px 50px;
+    cursor: pointer;
 }
 
-.frankenstein-update-dialog {
+.frankenstein-version:hover {
+    text-decoration: underline;
+}
+
+.frankenstein-dialog {
     background-color: var(--background);
     border-radius: 18px;
     box-shadow: 0 2px 4px var(--accent);
@@ -262,21 +267,22 @@ body[data-theme="LIGHT"] .frankenstein-logo {
     max-width: 500px;
 }
 
-.frankenstein-update-dialog::backdrop {
+.frankenstein-dialog::backdrop {
     background-color: var(--background);
     opacity: 0.5;
     backdrop-filter: blur(10px);
 }
 
-.frankenstein-update-dialog h2 {
+.frankenstein-dialog h2 {
     margin: 0;
 }
 
-.frankenstein-update-dialog p {
+.frankenstein-dialog p {
     margin: 10px 0;
 }
 
-.frankenstein-update-dialog #update-button {
+.frankenstein-dialog #update-button,
+.frankenstein-dialog #close-about-button {
     background-color: var(--accent);
     border: none;
     border-radius: 4px;
@@ -285,16 +291,18 @@ body[data-theme="LIGHT"] .frankenstein-logo {
     padding: 10px 20px;
 }
 
-.frankenstein-update-dialog #update-button:focus {
+.frankenstein-dialog #update-button:focus,
+.frankenstein-dialog #close-about-button:focus {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
-.frankenstein-update-dialog #update-button:hover {
+.frankenstein-dialog #update-button:hover,
+.frankenstein-dialog #close-about-button:hover {
     background-color: var(--accent);
 }
 
-.frankenstein-update-dialog #cancel-update-button {
+.frankenstein-dialog #cancel-update-button {
     background-color: var(--background);
     border: 2px solid var(--accent);
     border-radius: 4px;
@@ -303,12 +311,27 @@ body[data-theme="LIGHT"] .frankenstein-logo {
     padding: 10px 20px;
 }
 
-.frankenstein-update-dialog #cancel-update-button:focus {
+.frankenstein-dialog #cancel-update-button:focus {
     outline: 2px solid var(--accent);
     outline-offset: 2px;
 }
 
-.frankenstein-update-dialog div {
+.frankenstein-dialog .flex-container {
     display: flex;
     gap: 15px;
+}
+
+.frankenstein-dialog .dialog-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.frankenstein-dialog .dialog-center p {
+    text-align: center;
+}
+
+.simple-icon {
+    fill: var(--accent);
 }
