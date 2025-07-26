@@ -27,7 +27,7 @@
     `;
     document.body.appendChild(dialog);
 
-    window.pywebview.api.frankenstein_colour_logo().then(logo => {
+    window.pywebview.api.assets.frankenstein_colour_logo().then(logo => {
       const logoElement = document.createElement('img');
       logoElement.src = logo;
       logoElement.height = 100;

@@ -6,12 +6,14 @@ from packaging.version import Version
 from api.github import Github
 from assets import image_base64
 from constants import APP_VERSION, SESSION, HARDCOVER
+from internal.bridges.asset_bridge import AssetBridge
 from internal.matches import MATCHES
 
 # TODO: Add tests
 class JSBridge:
     def __init__(self):
         self.version_checked = False
+        self.assets = AssetBridge()
 
     def update_progress_percentage(self, data):
         array_data = json.loads(data["body"])
@@ -52,9 +54,6 @@ class JSBridge:
             SESSION.start(hardcover_id, google_id, user_book_read, user_book["book"]["pages"])
         return "OK"
 
-    def get_icon(self):
-        return image_base64("img/frankenstein.png")
-
     def check_for_update(self):
         if self.version_checked:
             return {"new_version_available": False, "new_version": APP_VERSION, "current_version": APP_VERSION}
@@ -71,6 +70,3 @@ class JSBridge:
     def open_release_page(self):
         webbrowser.open("https://github.com/crxssed7/play-books-frankenstein/releases/latest")
         return "OK"
-
-    def frankenstein_colour_logo(self):
-        return image_base64("img/frankenstein_colour.png")

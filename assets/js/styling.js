@@ -1,7 +1,7 @@
 (function () {
   function createAppIcon() {
-    if (window.pywebview && window.pywebview.api && window.pywebview.api.get_icon) {
-      window.pywebview.api.get_icon().then(icon => {
+    if (window.pywebview && window.pywebview.api && window.pywebview.api.assets.get_icon) {
+      window.pywebview.api.assets.get_icon().then(icon => {
         let img = document.getElementById('frankenstein');
         if (img === null) {
           img = document.createElement('img');
