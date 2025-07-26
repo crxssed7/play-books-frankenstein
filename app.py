@@ -1,9 +1,10 @@
 import os
 import webview
 import sys
+from packaging.version import Version
 
 from assets import load_asset
-from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
+from constants import APP_VERSION, DATA_DIR, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
 
 # TODO: Figure out how to do end-to-end tests
@@ -52,7 +53,7 @@ class App:
             self.window.evaluate_js(reader_js)
             self.window.evaluate_js(matcher_js)
         elif url.startswith("https://play.google.com/books"):
-            version_checker = load_asset("js/version_checker.js")
-            self.window.evaluate_js(version_checker)
+            version = load_asset("js/version.js")
+            self.window.evaluate_js(version)
             css = load_asset("css/style.css")
             self.window.load_css(css)
