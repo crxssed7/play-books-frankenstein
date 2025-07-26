@@ -51,7 +51,7 @@ function showHardcoverResults(results, googleId) {
     inner.appendChild(authors);
 
     resultDiv.onclick = () => {
-      window.pywebview.api.save_match(googleId, book.id).then(() => {
+      window.pywebview.api.matches.save(googleId, book.id).then(() => {
         container.remove();
       });
     };
@@ -71,7 +71,7 @@ function showHardcoverResults(results, googleId) {
 
   const title = document.title.replace(" - Google Play Books", "")
   const googleID = extractGoogleIDFromURL();
-  window.pywebview.api.get_match_from_google_id(googleID).then(match => {
+  window.pywebview.api.matches.get_match_from_google_id(googleID).then(match => {
     if (match === null) {
       window.pywebview.api.search_hardcover(title).then(results => {
         if (results.length > 0) {
