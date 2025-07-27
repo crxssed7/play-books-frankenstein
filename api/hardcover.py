@@ -74,7 +74,7 @@ class Hardcover:
             return user_book
 
     def create_user_book_read(self, book, user_book):
-        edition = book["editions"]["id"]
+        edition = book["editions"][0]["id"]
         body = self._build_body("CreateUserBookRead", {"user_book_id": int(user_book["id"]), "started_at": datetime.date.today().strftime('%Y-%m-%d'), "edition_id": edition})
         result = self._send_request(body)
         if result.status_code < 300:
