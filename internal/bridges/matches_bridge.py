@@ -1,17 +1,19 @@
+import logging
 from constants import HARDCOVER, SESSION
 from internal.matches import Matches
 
 class MatchesBridge:
     def __init__(self):
         self.matches = Matches()
+        self.logger = logging.getLogger(__name__)
 
     def save(self, google_id, book_id):
         hardcover_book = HARDCOVER.get_book(book_id)
         if hardcover_book == None:
-            print(f"Hardcover book not found for ID: {book_id}")
+            self.logger.info(f"Hardcover book not found for ID: {book_id}")
             return "BOOK_NOT_FOUND"
 
-        print(f"Saving match: {google_id} -> {hardcover_book.get('id')}")
+        self.logger.info(f"Saving match: {google_id} -> {hardcover_book.get('id')}")
         self.matches.save_match(google_id, hardcover_book)
         if not HARDCOVER.is_logged_in():
             return "NOT_LOGGED_IN"

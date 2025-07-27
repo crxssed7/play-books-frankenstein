@@ -1,15 +1,18 @@
+import logging
 import atexit
 import os
 import webview
 import sys
 
 from assets import load_asset
-from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
+from constants import DATA_DIR, LOG_FILE, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
 
 # TODO: Figure out how to do end-to-end tests
 class App:
     def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        logging.basicConfig(filename=LOG_FILE, level=logging.INFO)
         self.js_bridge = JSBridge()
         self.window = webview.create_window("Frankenstein", START_URL, width=1024, height=768, js_api=self.js_bridge, background_color="#202124")
         self.window.events.loaded += self._on_loaded
@@ -29,7 +32,7 @@ class App:
 
         url = self.window.get_current_url()
         if not url:
-            print("No URL loaded")
+            self.logger.info("No URL loaded")
             return
 
         if url.startswith("https://play.google.com/store") or url.startswith("https://myaccount.google.com"):
@@ -56,10 +59,10 @@ class App:
     def _update_hardcover(self):
         if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
             if SESSION.active_hardcover_book: # This should always be true
-                print(f"Updating Hardcover progress for {SESSION.active_hardcover_book.get('id')}")
+                self.logger.info(f"Updating Hardcover progress for {SESSION.active_hardcover_book.get('id')}")
             error = HARDCOVER.update_progress(SESSION.active_user_book_read, SESSION.current_page)
             if error:
-                print(f"Could not update Hardcover progress: {error}")
+                self.logger.info(f"Could not update Hardcover progress: {error}")
             SESSION.stop()
 
     def _on_exit(self):

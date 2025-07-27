@@ -1,3 +1,5 @@
+import logging
+
 class Session:
     def __init__(self):
         self.active_hardcover_book = None
@@ -7,9 +9,10 @@ class Session:
         self.current_page = 0
         self.num_of_pages = 0
         self.percentage = 0
+        self.logger = logging.getLogger(__name__)
 
     def start(self, hardcover_book, google_id, user_book_read, num_of_pages):
-        print(f"Starting session with Hardcover ID: {hardcover_book.get("id")} and Google ID: {google_id}. Read ID: {user_book_read.get("id")}, pages: {num_of_pages}")
+        self.logger.info(f"Starting session with Hardcover ID: {hardcover_book.get("id")} and Google ID: {google_id}. Read ID: {user_book_read.get("id")}, pages: {num_of_pages}")
         self.active_hardcover_book = hardcover_book
         self.active_google_id = google_id
         self.active_user_book_read = user_book_read
