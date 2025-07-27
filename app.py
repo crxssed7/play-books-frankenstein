@@ -2,10 +2,9 @@ import atexit
 import os
 import webview
 import sys
-from packaging.version import Version
 
 from assets import load_asset
-from constants import APP_VERSION, DATA_DIR, SESSION, START_URL, HARDCOVER
+from constants import DATA_DIR, SESSION, START_URL, HARDCOVER
 from internal.js_bridge import JSBridge
 
 # TODO: Figure out how to do end-to-end tests
