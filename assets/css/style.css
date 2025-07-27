@@ -206,8 +206,9 @@ a[aria-label="Google Play Books"] {
 }
 
 .frankenstein-logo {
-    height: 50px;
+    height: 40px;
     width: auto;
+    margin: auto 5px;
 }
 
 body[data-theme="LIGHT"] .frankenstein-logo {
@@ -335,3 +336,57 @@ body[data-theme="LIGHT"] .frankenstein-logo {
 .simple-icon {
     fill: var(--accent);
 }
+
+/* MATCHER START */
+#matcher {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+    background: white;
+    color: black;
+    border: 2px solid var(--hint);
+    z-index: 999999;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 28px;
+    background-color: var(--background);
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+#matcher::-webkit-scrollbar {
+    display: none;
+}
+
+.hc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    padding-bottom: 0;
+    color: var(--foreground);
+}
+
+.result {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    cursor: pointer;
+    padding: 5px 20px;
+    color: var(--foreground);
+}
+
+.result:hover {
+    background-color: var(--hint);
+}
+
+.close-button {
+    font-size: 24px;
+    cursor: pointer;
+}
+/* MATCHER END */
