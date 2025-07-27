@@ -1,7 +1,12 @@
 query UserBook($id: Int) {
     me {
         user_books(where: { book_id: { _eq: $id } }) {
-            user_book_reads(where: { finished_at: { _is_null: true } }) {
+            user_book_reads(
+                where: {
+                    finished_at: { _is_null: true }
+                    started_at: { _is_null: false }
+                }
+            ) {
                 id
                 user_book_id
                 finished_at
