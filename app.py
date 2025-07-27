@@ -1,3 +1,4 @@
+import atexit
 import os
 import webview
 import sys
@@ -16,6 +17,7 @@ class App:
 
     def start(self):
         self._setup_config_dir()
+        atexit.register(self._on_exit)
         gui = "qt" if sys.platform == "linux" else None
         webview.start(private_mode=False, gui=gui, storage_path=DATA_DIR)
 
@@ -24,13 +26,7 @@ class App:
             os.makedirs(DATA_DIR)
 
     def _on_loaded(self):
-        if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
-            if SESSION.active_hardcover_book: # This should always be true
-                print(f"Updating Hardcover progress for {SESSION.active_hardcover_book.get('id')}")
-            error = HARDCOVER.update_progress(SESSION.active_user_book_read, SESSION.current_page)
-            if error:
-                print(f"Could not update Hardcover progress: {error}")
-            SESSION.stop()
+        self._update_hardcover()
 
         url = self.window.get_current_url()
         if not url:
@@ -57,3 +53,15 @@ class App:
             self.window.evaluate_js(version)
             css = load_asset("css/style.css")
             self.window.load_css(css)
+
+    def _update_hardcover(self):
+        if SESSION.is_active() and SESSION.current_page > 0 and HARDCOVER.is_logged_in():
+            if SESSION.active_hardcover_book: # This should always be true
+                print(f"Updating Hardcover progress for {SESSION.active_hardcover_book.get('id')}")
+            error = HARDCOVER.update_progress(SESSION.active_user_book_read, SESSION.current_page)
+            if error:
+                print(f"Could not update Hardcover progress: {error}")
+            SESSION.stop()
+
+    def _on_exit(self):
+        self._update_hardcover()
