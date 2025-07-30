@@ -2,6 +2,7 @@ import datetime
 import requests
 
 from assets import resource_path
+from internal.settings import SETTINGS
 
 class Hardcover:
     def __init__(self, token: str | None):
@@ -113,3 +114,5 @@ class Hardcover:
         asset_path = resource_path(f"api/queries/{query}.graphql")
         with open(asset_path, 'r') as file:
             return file.read()
+
+HARDCOVER = Hardcover(SETTINGS.hardcover_token)

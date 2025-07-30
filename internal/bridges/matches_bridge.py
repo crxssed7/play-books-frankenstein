@@ -1,5 +1,6 @@
 import logging
-from constants import HARDCOVER, SESSION
+from api.hardcover import HARDCOVER
+from constants import SESSION
 from internal.matches import Matches
 
 class MatchesBridge:
