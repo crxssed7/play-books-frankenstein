@@ -1,5 +1,6 @@
 import logging
-from constants import HARDCOVER
+
+from api.hardcover import HARDCOVER
 
 class HardcoverBridge:
     def __init__(self):

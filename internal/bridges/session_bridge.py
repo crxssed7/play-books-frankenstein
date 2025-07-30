@@ -1,6 +1,7 @@
 import json
 
-from constants import HARDCOVER, SESSION
+from api.hardcover import HARDCOVER
+from constants import SESSION
 
 class SessionBridge:
     def update_progress_percentage(self, data):

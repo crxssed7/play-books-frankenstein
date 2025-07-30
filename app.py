@@ -5,9 +5,11 @@ import webview
 import sys
 import threading
 
+from api.hardcover import HARDCOVER
 from assets import load_asset
-from constants import DATA_DIR, LOG_FILE, SESSION, START_URL, HARDCOVER
+from constants import DATA_DIR, LOG_FILE, SESSION, START_URL
 from internal.js_bridge import JSBridge
+from internal.settings import SETTINGS
 
 # TODO: Figure out how to do end-to-end tests
 class App:
@@ -63,6 +65,7 @@ class App:
             self._run_js("js/matcher.js")
         elif url.startswith("https://play.google.com/books"):
             self._run_js("js/components/app_icon.js")
+            self._run_js("js/components/settings.js")
             self._run_js("js/components/theme_toggler.js")
             self._run_js("js/version.js")
 
@@ -86,3 +89,4 @@ class App:
 
     def _on_exit(self):
         self._update_hardcover()
+        SETTINGS.save_settings()
