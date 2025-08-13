@@ -28,7 +28,9 @@ Upcoming features:
 Frankenstein is setup to automatically track your progress with Hardcover.
 1. Head over to https://hardcover.app/account/api
 2. Copy your token (without the "Bearer" part)
-3. Set the HARDCOVER_TOKEN environment variable to the token you just copied
+3. In Frankenstein, click the gear icon in the top right
+4. Set the Hardcover token setting to the token you just copied
+5. Restart Frankenstein
 
 To link a book with Hardcover:
 1. Open the book you want to link
