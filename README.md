@@ -3,6 +3,8 @@
 # Frankenstein
 **Unofficial Google Play Books client for desktop**
 
+[![Github All Releases](https://img.shields.io/github/downloads/crxssed7/play-books-frankenstein/total.svg)](https://github.com/crxssed7/play-books-frankenstein/releases/latest)
+
 > [!WARNING]
 > Frankenstein has only been tested on Linux using uploaded books. It should still work on other platforms too (hopefully).
 
