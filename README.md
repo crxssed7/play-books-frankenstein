@@ -5,6 +5,9 @@
 
 [![Github All Releases](https://img.shields.io/github/downloads/crxssed7/play-books-frankenstein/total.svg)](https://github.com/crxssed7/play-books-frankenstein/releases/latest)
 
+> [!CAUTION]
+> Further development has essentially been halted for Frankenstein. This app can break at any moment. I've since switched over to self-hosting my e-books using [Calibre Web Automated](https://github.com/crocodilestick/Calibre-Web-Automated), pulling them into my [KOReader](https://github.com/koreader/koreader) library using OPDS and syncing them to Hardcover using this plugin: [Billiam/hardcoverapp.koplugin](https://github.com/Billiam/hardcoverapp.koplugin)
+
 > [!WARNING]
 > Frankenstein has only been tested on Linux using uploaded books. It should still work on other platforms too (hopefully).
 
